@@ -33,7 +33,7 @@ namespace Agava.YandexGames.Samples
 #endif
 
             // Always wait for it if invoking something immediately in the first scene.
-            yield return YandexGamesSdk.WaitForInitialization();
+            yield return YandexGamesSdk.Initialize();
 
             while (true)
             {
@@ -134,6 +134,16 @@ namespace Agava.YandexGames.Samples
         public void OnGetEnvironmentButtonClick()
         {
             Debug.Log($"Environment = {JsonUtility.ToJson(YandexGamesSdk.Environment)}");
+        }
+
+        public void InitIAP()
+        {
+            YandexGames.InAppPurchases.InitPayments();
+        }
+
+        public void TestIAP()
+        {
+            YandexGames.InAppPurchases.BuyItem("test");
         }
     }
 }
